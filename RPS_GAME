@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main() {
+    srand(time(NULL));
+    char* choices[] = {"가위", "바위", "보"};
+    char* userChoice, * computerChoice;
+
+    printf("가위 바위 보 게임을 시작합니다. (가위, 바위, 보 중에서 선택하세요)\n");
+    printf("사용자의 선택: ");
+    scanf("%ms", &userChoice); 
+
+    computerChoice = choices[rand() % 3];
+  
+    printf("사용자: %s, 컴퓨터: %s\n", userChoice, computerChoice);
+
+    if (strcmp(userChoice, computerChoice) == 0)
+        printf("무승부입니다!\n");
+    else if ((strcmp(userChoice, "가위") == 0 && strcmp(computerChoice, "보") == 0) ||
+             (strcmp(userChoice, "바위") == 0 && strcmp(computerChoice, "가위") == 0) ||
+             (strcmp(userChoice, "보") == 0 && strcmp(computerChoice, "바위") == 0))
+        printf("사용자가 이겼습니다!\n");
+    else
+        printf("컴퓨터가 이겼습니다!\n");
+
+    free(userChoice);
+
+    return 0;
+}
